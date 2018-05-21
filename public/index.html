@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Contact List</title>
+	 <!-- Favicon -->
+	<link rel="icon" href="contact.png" type="image/png" sizes="16x16">
+
+	 <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Custom Style sheets -->
+	<link rel="stylesheet" type="text/html" href="/css/style.css">
+	 
+</head>
+
+
+<body ng-controller="appCtrl">
+	<div class="container">
+		<h1>Sample Contact List Application</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Number</th>
+					<th>Action</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="text" class="form-control" ng-model="contact.name"></td>
+					<td><input type="text" class="form-control" ng-model="contact.email"></td>
+					<td><input type="text" class="form-control" ng-model="contact.number"></td>
+					<td>
+						<button class="btn btn-primary" ng-click="addContact()" ng-if = "showhideInput">Add Contact</button>
+						<button class="btn btn-info" ng-click="update()" ng-if = "!showhideInput">Update</button>
+					</td>
+					<td><button class="btn btn-primary" ng-click="deselect()">Clear</button></td>
+				</tr>
+				<tr ng-repeat="contact in contactList">
+					<td>{{contact.name}}</td>
+					<td>{{contact.email}}</td>
+					<td>{{contact.number}}</td>
+					<td><button class="btn btn-danger" ng-click="remove(contact._id)">Remove</button></td>
+					<td><button class="btn btn-warning" ng-click="edit(contact._id)">Edit</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<!-- Angular JS CDN -->
+	<script data-require="angularjs@1.4.9" data-semver="1.4.9" src="https://code.angularjs.org/1.4.9/angular.min.js"></script>
+	<!-- <script src="/JS/app.js"></script> -->
+	<script src="/JS/controllers/controller.js"></script>
+</body>
+</html>
